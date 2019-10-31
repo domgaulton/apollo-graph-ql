@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import client from './Apollo';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ExchangeRates from './ExchangeRates';
+import TestQL from './TestQL';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="flex">
+        <div>
+          <h1>Working USD</h1>
+          <ExchangeRates />
+        </div>
+        <div>
+          <h1>Test GBP</h1>
+          <TestQL />
+        </div>
+      </div>
+    </ApolloProvider>
   );
 }
 
